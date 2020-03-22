@@ -6,7 +6,7 @@ namespace LatClass
         static void Main(string[] args)
         {
             Taxi taxi = new Taxi();
-            taxi.driverName     = "jojo";
+            taxi.driverName     = "Novanda";
             taxi.onDuty         = true;
             taxi.NumPassenger   = 20;
           
