@@ -1,40 +1,58 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Taxi
+namespace LatClass
 {
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Taxi taxi = new Taxi();
+            taxi.driverName     = "jojo";
+            taxi.onDuty         = true;
+            taxi.NumPassenger   = 20;
+          
+            taxi.TaxiInfo();
+            Console.WriteLine("\n");
+            taxi.PickUpPassenger();
+            taxi.DropOffPassenger();
+            Console.ReadKey();
+        }
+    }
     class Taxi
     {
-        // Properties
-        public string DriverName { get; set; }
+        public string driverName { get; set; }
+        public bool onDuty { get; set; }
         public int NumPassenger { get; set; }
-        public bool OnDuty { get; set; }
-        public string status { get; set; }
-        //method
         public void TaxiInfo()
         {
-            Console.WriteLine("Driver Name          : {0} ", DriverName);
-            if (OnDuty == true)
+            Console.WriteLine("Driver Name          : {0}", driverName);
+            if(onDuty)
             {
-                status = "Yes";
-            }
-            else
+                Console.WriteLine("On Duty              : Yes");
+            } else
             {
-                status = "No";
+                Console.WriteLine("On Duty              : No");
             }
-            Console.WriteLine("On Duty              : {0} ", status);
-            Console.WriteLine("Number of Passenger  : {0}\n", NumPassenger);
+            Console.WriteLine("Number of Passenger  : {0}", NumPassenger);
         }
         public void PickUpPassenger()
         {
-            Console.WriteLine("{0} sedang menjemput penumpang", DriverName);
+            if (onDuty)
+            {
+                Console.WriteLine("Driver {0} is picking up passengers", driverName);
+            } else
+            {
+                Console.WriteLine("Driver {0} not picking up passengers", driverName);
+            }
         }
         public void DropOffPassenger()
         {
-            Console.WriteLine("{0} sedang mengantar penumpang", DriverName);
+            if (onDuty)
+            {
+                Console.WriteLine("Driver {0} finished delivering passengers", driverName);
+            } else
+            {
+                Console.WriteLine("Driver {0} ", driverName);
+            }
         }
     }
 }
